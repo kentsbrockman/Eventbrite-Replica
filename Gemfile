@@ -27,6 +27,7 @@ gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
 gem 'bundler'
 gem 'faker'
 gem 'table_print'
+gem 'date_validator'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

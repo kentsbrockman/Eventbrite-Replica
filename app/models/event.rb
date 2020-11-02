@@ -1,6 +1,9 @@
 class Event < ApplicationRecord
 
-  validates :start_date, presence: true, start_date > Date.today
+  validates :start_date,
+    presence: true,
+    date: { after: Proc.new { Date.today }, message: 'must be after today' },
+    on: :create
   validates :duration, presence: true, numericality: { greater_than: 0 }, if: (:duration % 5).zero?
   validates :title, presence: true, length: { in: 5..140 }
   validates :description, presence: true, length: { in: 20..1000 }
