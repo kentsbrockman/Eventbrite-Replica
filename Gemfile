@@ -24,6 +24,10 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
 
+gem 'bundler'
+gem 'faker'
+gem 'table_print'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
