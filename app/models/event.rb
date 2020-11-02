@@ -15,7 +15,7 @@ class Event < ApplicationRecord
     length: { in: 20..1000 }
   validates :price,
     presence: true,
-    value: { in: 1..1000 }
+    #value: { in: 1..1000 }
   validates :location, presence: true
 
   has_many :attendances
