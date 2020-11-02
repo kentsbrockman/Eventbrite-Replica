@@ -2,11 +2,10 @@ class Event < ApplicationRecord
 
   validates :start_date,
     presence: true,
-    date: { after: Proc.new { Date.today }, message: 'must be after today' },
-    on: :create
+    if: :future_date?
   validates :duration,
     presence: true,
-    numericality: true,
+    numericality: { only_integer: true, greater_than: 0 },
     if: :multiple_of_five?
   validates :title,
     presence: true,
@@ -16,17 +15,20 @@ class Event < ApplicationRecord
     length: { in: 20..1000 }
   validates :price,
     presence: true,
-    numericality: true,
-    numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 1000 }
+    numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 1000 }
   validates :location, presence: true
   
   has_many :attendances
   has_many :users, through: :attendances
 
-  belongs_to :user, class_name: "Admin"
+  belongs_to :admin, class_name: "User"
 
   def multiple_of_five?
-    errors.add(:duration, "Should be a multiple of 5.") unless duration % 5 == 0
+    errors.add(:duration, "should be a multiple of 5.") unless duration % 5 == 0
+  end
+
+  def future_date?
+    errors.add(:start_date, "Event can't be in the past") unless start_date > DateTime.now
   end
 
 end

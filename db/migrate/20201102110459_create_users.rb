@@ -7,7 +7,6 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :last_name
       t.text :description
 
-
       t.timestamps
     end
   end

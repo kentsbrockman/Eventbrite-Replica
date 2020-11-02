@@ -12,14 +12,42 @@ Faker::Config.locale = :fr
 
 #Generate users
 
-adjectifs= %w[petit grand maigre gros chauve musclé intelligent parfait médiocre insupportable éblouissant valeureux ringard beau gentil cool]
+  adjectifs= %w[petit grand maigre gros chauve musclé intelligent parfait médiocre insupportable éblouissant valeureux ringard beau gentil cool]
 
-10.times do
-  first_name = Faker::Name.first_name
-  last_name = Faker::Name.last_name
-  email = Faker::Internet.email(domain: 'yopmail.com')
-  text = "Je m'appelle #{first_name}, je suis #{adjectifs.sample} et mon livre préféré est #{Faker::Book.title}, je suis #{Faker::Name.title[:job].sample} à #{Faker::Address.city}."
-  User.create(first_name: first_name, last_name: last_name, description: text, email: email)
+  10.times do
+
+    first_name = Faker::Name.first_name
+    last_name = Faker::Name.last_name
+    email = Faker::Internet.email(domain: 'yopmail.com')
+    text = "Je m'appelle #{first_name}, je suis #{adjectifs.sample} et mon livre préféré est #{Faker::Book.title}, je suis #{Faker::Name.title[:job].sample} à #{Faker::Address.city}."
+
+    User.create(first_name: first_name, last_name: last_name, description: text, email: email)
+
   end
+    
   puts "-------------------- Users table --------------------"
   tp User.all
+
+
+#Generate events
+
+event_durations = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]
+
+  10.times do
+
+    start_date = Faker::Date.between(from: Date.today, to: '2021-12-31')
+    duration = event_durations.sample
+    title = Faker::Hipster.word
+    description = Faker::ChuckNorris.fact
+    price = Faker::Number.within(range: 1..1000)
+    location = Faker::Address.city
+
+    Event.create(start_date: start_date, duration: duration, title: title, description: description, price: price, location: location)
+
+  end
+
+  puts "-------------------- Events table --------------------"
+  tp Event.all
+
+
+
