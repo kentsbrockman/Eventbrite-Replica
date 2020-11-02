@@ -11,6 +11,10 @@ class Event < ApplicationRecord
   has_many :users, through: :attendances
 
   belongs_to :user, class_name: "Admin"
+
+  def future?
+    self > ::DateTime.current
+  end
   
 
 end
