@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
 
-  validates :start_date, presence: true, if: :start_date.future?
+  validates :start_date, presence: true, self.start_date.future?
   validates :duration, presence: true, numericality: { greater_than: 0 }, if: (:duration % 5).zero?
   validates :title, presence: true, length: { in: 5..140 }
   validates :description, presence: true, length: { in: 20..1000 }
@@ -12,9 +12,6 @@ class Event < ApplicationRecord
 
   belongs_to :user, class_name: "Admin"
 
-  def future?
-    self > ::DateTime.current
-  end
   
 
 end
