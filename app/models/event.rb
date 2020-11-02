@@ -1,9 +1,9 @@
 class Event < ApplicationRecord
 
-  validates :start_date
+  validates :start_date,
     presence: true
     #start_date > Time.now
-  validates :duration
+  validates :duration,
     presence: true
     #value > 0
     #value%5 = 0
