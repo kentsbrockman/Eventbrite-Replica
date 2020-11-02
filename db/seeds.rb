@@ -14,7 +14,7 @@ Faker::Config.locale = :fr
 
 adjectifs= %w[petit grand maigre gros chauve musclé intelligent parfait médiocre insupportable éblouissant valeureux ringard beau gentil cool]
 
-50.times do
+10.times do
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   email = Faker::Internet.email(domain: 'yopmail.com')
