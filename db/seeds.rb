@@ -33,7 +33,7 @@ Faker::Config.locale = :fr
 
 event_durations = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]
 
-  10.times do
+  5.times do
 
     start_date = Faker::Date.between(from: Date.today, to: '2021-12-31')
     duration = event_durations.sample

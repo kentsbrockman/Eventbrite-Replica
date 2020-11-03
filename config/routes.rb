@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  root 'welcome#index'
+  root 'events#index'
+  get 'events/index', to: 'events#index'
+
+  get 'events/secret'
+  devise_for :users
+
 end
