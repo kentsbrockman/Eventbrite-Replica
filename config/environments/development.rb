@@ -32,7 +32,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Mailer methods to activate for mailing tests
-  config.action_mailer.delivery_method = :letter_opener
+  #config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
 
   # Mailer sync with devise gem
