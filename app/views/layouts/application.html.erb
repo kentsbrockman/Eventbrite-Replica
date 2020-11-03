@@ -12,6 +12,54 @@
   </head>
 
   <body>
+
+  <!-- Header -->
+  <nav class="navbar navbar-light bg-light static-top">
+
+      <div class="brand">
+        <a class="navbar-brand align-top">Eventbrite replica</a>
+      </div>
+
+      <div class="nav-items d-flex mr-auto">
+        <%= link_to "Team", gossip_project_team_path, class:"nav-link" %>
+        <%= link_to "Contact", gossip_project_contact_path, class:"nav-link" %>
+      </div>
+    
+      <% else %>
+        <li>    
+          <%= link_to "Sign in", new_user_session_path %>
+        </li>
+    
+        <li>
+          <%= link_to "Sign up", new_user_registration_path %>
+        </li>
+    
+      <% end %>
+    </ul>
+
+      <% if user_signed_in? %>
+        <div class="nav-items d-flex">
+          <%= current_user.email %>
+          <%= link_to "Edit email / password", edit_user_registration_path %>
+          <%= link_to "Secret garden", events_secret_path %>
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+        </div>
+      
+      <% else %>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Login
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <%= link_to "Login", new_session_path, :class => "dropdown-item" %>
+            <%= link_to "Sign up", new_user_path, :class => "dropdown-item" %>
+          </div>
+        </div>
+      <% end %>   
+  </nav>
+
+
+
     <%= yield %>
   </body>
 </html>
