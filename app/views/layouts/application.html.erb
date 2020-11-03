@@ -39,13 +39,17 @@
             Login
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <%= link_to "Login", new_session_path, :class => "dropdown-item" %>
-            <%= link_to "Sign up", new_user_path, :class => "dropdown-item" %>
+            <%= link_to "Log in", new_user_session_path, :class => "dropdown-item" %>
+            <%= link_to "Sign up", new_user_registration_path, :class => "dropdown-item" %>
           </div>
         </div>
       <% end %>   
   </nav>
 
-    <%= yield %>
+
+  <%= yield %>
+
+
   </body>
+  
 </html>
