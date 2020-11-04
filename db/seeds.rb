@@ -18,7 +18,7 @@ Faker::Config.locale = :fr
 
     first_name = Faker::Name.first_name
     last_name = Faker::Name.last_name
-    email = Faker::Internet.email(domain: 'yopmail.com')
+    email = "#{first_name}_#{last_name}@yopmail.com"
     description = "Je m'appelle #{first_name}, je suis #{adjectifs.sample} et mon livre préféré est #{Faker::Book.title}, je suis #{Faker::Name.title[:job].sample} à #{Faker::Address.city}."
     password = "blablabliblablou"
 
@@ -38,7 +38,7 @@ event_durations = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]
 
     start_date = Faker::Date.between(from: Date.today, to: '2021-12-31')
     duration = event_durations.sample
-    title = Faker::Hipster.word
+    title = Faker::Hipster.word.capitalize
     description = Faker::ChuckNorris.fact
     price = Faker::Number.within(range: 1..1000)
     location = Faker::Address.city
@@ -50,6 +50,17 @@ event_durations = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]
 
   puts "-------------------- Events table --------------------"
   tp Event.all
+
+
+#Generate attendances
+
+  5.times do
+  Attendance.create(user: User.all.sample, event: Event.all.sample)
+  end
+
+  puts "-------------------- Attendance table --------------------"
+  tp Attendance.all
+
 
 
 

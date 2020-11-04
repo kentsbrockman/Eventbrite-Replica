@@ -25,6 +25,8 @@ gem 'jbuilder', '~> 2.7'
 # Additional gems
 
 gem 'bcrypt'
+
+gem 'dotenv'
 gem 'dotenv-rails'
 gem 'bundler'
 gem 'faker'

@@ -1,9 +1,9 @@
-<h1>Salut <%= @user.first_name.capitalize %></h1>
+<h1>Salut <%= @user.first_name.capitalize %> !</h1>
     <p>
-      Nous avons pris en compte ta participation à l'évènement <%= @event.title %>
+      Nous avons bien pris en compte ton inscription à l'évènement <%= @event.title %>.
     </p>
     <p>
-      Voici l'email de contact <%= @event.admin.email %>.
+      Voici l'email de l'organisateur <%= @admin.email %>.
     </p>
     <p>
       Voici ton email <%= @user.email %>.
