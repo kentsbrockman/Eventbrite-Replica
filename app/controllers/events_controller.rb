@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
 
   def index
+    @events = Event.all
   end
 
   def new
@@ -10,16 +11,5 @@ class EventsController < ApplicationController
   def show
   end
 
-  def terms
-  end
-
-  def privacy
-  end
-
-  def contact
-  end
-
-  def team
-  end
 
 end
