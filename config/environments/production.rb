@@ -60,8 +60,14 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "test_action_mailer_production"
 
-  config.action_mailer.perform_caching = false
   config.action_mailer.perform_deliveries = false
+
+  # Mailer sync with devise gem
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # Don't care if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
