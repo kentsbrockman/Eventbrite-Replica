@@ -1,4 +1,6 @@
-##Eventbrite de Wish
+#Eventbrite de Wish
+
+---
 
 https://eventbrite-replica.herokuapp.com/
 
