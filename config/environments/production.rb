@@ -61,6 +61,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "test_action_mailer_production"
 
   config.action_mailer.perform_caching = false
+  config.action_mailer.perform_deliveries = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
