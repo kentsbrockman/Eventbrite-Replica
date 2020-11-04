@@ -34,7 +34,7 @@
                 My Profile
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <%= current_user.email %>
+                <%= link_to "My profile", user_path(current_user.id), :class => "dropdown-item" %>
                 <%= link_to "Sign out", destroy_user_session_path, method: :delete, :class => "dropdown-item" %>
               </div>
             </div>
