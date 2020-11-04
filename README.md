@@ -1,24 +1,7 @@
-# README
+##Eventbrite de Wish
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+https://eventbrite-replica.herokuapp.com/
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Hélas, je me suis gentiment fait bloquer par Sendgrid après avoir envoyé mon 101ème mail en prod (trop de rake db:seed tue le seed).
+* Bref, vous pouvez jeter un oeil sur la homepage, mais impossible de vous logguer car ça implique de générer du vrai email 😭.
+* Par contre, l'authentification en local passe crème, et on pourra même checker les différents mails générés via letter-opener ❤️
