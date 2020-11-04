@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
+
   root 'events#index'
 
-  get 'events/index', to: 'events#home'
-  get 'events/secret', to: 'events#secret'
-  get 'events/team', to: 'events#team'
-  get 'events/contact', to: 'events#contact'
-  #get 'events/privacy', to: 'events#privacy'
-  #get 'events/terms', to: 'events#terms'
+  resources :events
 
-
+  get 'home/team', to: 'home#team'
+  get 'home/contact', to: 'home#contact'
+  get 'home/privacy', to: 'home#privacy'
+  get 'home/terms', to: 'home#terms'
 
   devise_for :users
 

@@ -9,6 +9,10 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
     <%= favicon_link_tag asset_path('favicon-32x32.png') %>
+
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+
   </head>
 
   <body>
@@ -16,38 +20,91 @@
   <!-- Header -->
   <nav class="navbar navbar-light bg-none static-top">
 
-      <div class="brand">
-        <%= link_to image_tag('logo_homepage.png', :alt => 'logo', class:"navbar-brand"), root_path  %>
-      </div>
+    <div class="brand">
+      <%= link_to image_tag('logo_homepage.png', :alt => 'logo', class:"navbar-brand"), root_path  %>
+    </div>
 
-      <div class="nav-items d-flex mr-auto">
-        <%= link_to "Team", events_team_path, class:"nav-link" %>
-        <%= link_to "Contact", events_contact_path, class:"nav-link" %>
-      </div>
+    <div class="nav-items d-flex mr-auto">
+      <%= link_to "New event", new_event_path, class:"nav-link" %>
+    </div>
 
-      <% if user_signed_in? %>
-        <div class="nav-items d-flex">
-          <%= current_user.email %>
-          <%= link_to "Edit email / password", edit_user_registration_path %>
-          <%= link_to "Secret garden", events_secret_path %>
-          <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-        </div>
+    <ul>
+    <% if user_signed_in? %> 
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                My Profile
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <%= current_user.email %>
+                <%= link_to "Sign out", destroy_user_session_path, method: :delete, :class => "dropdown-item" %>
+              </div>
+            </div>
+          <% else %>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Log in
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <%= link_to "Log in", new_user_session_path, :class => "dropdown-item" %>
+                <%= link_to "Sign up", new_user_registration_path, :class => "dropdown-item" %>
+              </div>
+            </div>
+          <% end %>
+
       
-      <% else %>
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Login
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <%= link_to "Log in", new_user_session_path, :class => "dropdown-item" %>
-            <%= link_to "Sign up", new_user_registration_path, :class => "dropdown-item" %>
-          </div>
-        </div>
-      <% end %>   
   </nav>
 
 
   <%= yield %>
+
+
+  <!-- Footer -->
+  <footer class="footer bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 h-100 text-center text-lg-left">
+          <ul class="list-inline my-2">
+            <li class="list-inline-item">
+              <a href="<%= home_team_path %>">About</a>
+            </li>
+            <li class="list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+              <a href="<%= home_contact_path %>">Contact</a>
+            </li>
+            <li class="list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+              <a href="<%= home_terms_path %>">Terms of Use</a>
+            </li>
+            <li class="list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+              <a href="<%= home_privacy_path %>">Privacy</a>
+            </li>
+          </ul>
+          <p class="text-muted small my-2">&copy; The Gossip Project 2020. All Rights Reserved.</p>
+        </div>
+        <div class="col-lg-6 text-center text-lg-right">
+          <ul class="list-inline mb-2">
+            <li class="list-inline-item mr-3">
+              <a href="#">
+                <i class="fab fa-facebook fa-2x fa-fw"></i>
+              </a>
+            </li>
+            <li class="list-inline-item mr-3">
+              <a href="#">
+                <i class="fab fa-twitter-square fa-2x fa-fw"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="fab fa-instagram fa-2x fa-fw"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
