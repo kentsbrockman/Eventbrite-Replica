@@ -1,1 +1,12 @@
-<h1> Events / show </h1>
+
+<div class="container">
+<div class="mt-3">
+  <h1 class="text-center m-3">Title of this event : <%= @event.title %></h1>
+  <p>Description : <%= @event.description %></p>
+  <p>Number of subscribers : Not mentionned</p>
+  <p>Creator : <%= @event.admin.email %></p>
+  <p>Start at : <%= @event.start_date %></p>
+  <p>Duration : <%= @event.duration %></p>
+  <p>Where : <%= @event.location %></p>
+  <p>Price : <%= @event.price %> €</p>
+</div>
