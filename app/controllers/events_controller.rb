@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :show]
+  before_action :authenticate_user!, only: [:new, :create]
+  
   def index
     @events = Event.all
   end
@@ -37,6 +38,5 @@ class EventsController < ApplicationController
   def str_to_datetime(str)
     DateTime.parse(str+'+01:00')
   end
-
 
 end

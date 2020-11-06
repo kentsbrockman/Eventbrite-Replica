@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 2020_11_03_115048) do
   enable_extension "plpgsql"
 
   create_table "attendances", force: :cascade do |t|
-    t.string "stripe_customer_id"
-    t.bigint "user_id"
     t.bigint "event_id"
+    t.bigint "user_id"
+    t.string "stripe_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["event_id"], name: "index_attendances_on_event_id"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2020_11_03_115048) do
     t.string "first_name"
     t.string "last_name"
     t.text "description"
+    t.string "stripe_id"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
