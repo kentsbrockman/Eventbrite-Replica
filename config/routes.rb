@@ -14,4 +14,8 @@ Rails.application.routes.draw do
 
   resources :events
 
+  resources :charges
+
+  resources :attendances
+
 end
