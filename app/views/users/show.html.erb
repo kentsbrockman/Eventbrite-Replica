@@ -5,9 +5,10 @@
     <%else%>
       <%= image_tag('who.png', :alt => 'default avatar', class:"img-fluid rounded-circle m-3") %>
       <%= form_tag user_avatars_path(@user), multipart: true do %>
-      <%= file_field_tag :avatar %>
-      <%= submit_tag "mettre à jour" %>
-    <% end %>
+        <%= file_field_tag :avatar %>
+        <%= submit_tag "mettre à jour" %>
+      <% end %>
+    <%end%>
   </div>
 <div>
 
