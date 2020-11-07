@@ -3,6 +3,7 @@
     <%if @user.avatar.attached?%>
       <%= image_tag @user.avatar, alt: 'avatar', class: "custom-profile-img mt-5 mb-2 mx-auto img-fluid" %>
     <%else%>
+      <%= image_tag "who.png", alt: 'avatar', class: "custom-profile-img mt-5 mb-2 mx-auto" %>
       <%= form_tag user_avatars_path(@user), multipart: true do %>
         <%= file_field_tag :avatar %>
         <%= submit_tag "mettre à jour" %>
@@ -10,6 +11,7 @@
     <%end%>
   </div>
 <div>
+
 
 <div class="container text-center">
 
