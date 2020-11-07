@@ -16,16 +16,14 @@ class UserMailer < ApplicationMailer
     @user = user 
     @admin = event.admin
     @event = event
-
-    mail(to: @user.email, subject: 'Tu es inscrit(e) à l\'événement du jour !')
+    mail(to: @user.email, subject: 'Tu es inscrit(e) à l\'évènement du jour !')
   end
 
   def email_to_admin(admin, user, event)
     @admin = admin 
     @user = user
     @event = event
-
-    mail(to: @admin.email, subject: 'Une autre personne s\'est inscrite à ton événement !')
+    mail(to: @admin.email, subject: 'Une autre personne s\'est inscrite à ton évènement !')
   end
   
 end
