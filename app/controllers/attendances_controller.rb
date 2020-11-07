@@ -11,42 +11,45 @@ class AttendancesController < ApplicationController
   
   def new
     @event = Event.find_by(id: params[:event_id])
+    @amount = @event.amount
+
+    if @amount == 0
+      Attendance.create(event: @event, user: current_user, stripe_id: "Free")
+      redirect_to event_path(@event),
+      success: "You're now registered for this event!"
+    end
+
     if @event.admin == current_user
       redirect_to event_path(@event),
       warning: "You're the administrator of this event, no need to register ^^"
-    else
-      @attendance = Attendance.new
     end
   end
 
   def create
     @event = Event.find_by(id: params[:event_id])
         
-    # Amount in cents
+    # Amount in cents originally
     @amount = @event.amount
 
     customer = Stripe::Customer.create({
-      email: params[:stripeEmail],
-      source: params[:stripeToken],
-    })
-  
-    begin
-      charge = Stripe::Charge.create({
-        customer: customer.id,
-        amount: @amount,
-        description: 'Rails Stripe customer',
-        currency: 'EUR',
+        email: params[:stripeEmail],
+        source: params[:stripeToken],
       })
-      Attendance.create(event: @event, user: current_user, stripe_id: customer)
+    
+    charge = Stripe::Charge.create({
+      customer: customer.id,
+      amount: @amount,
+      description: 'Rails Stripe customer',
+      currency: 'EUR',
+    })
+
+    Attendance.create(event: @event, user: current_user, stripe_id: customer)
 
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to new_attendance_path
-    end
-
   end
 
-  
   private
 
   def is_admin?

@@ -14,7 +14,7 @@ Faker::Config.locale = :fr
 
   adjectifs= %w[petit grand maigre gros chauve musclé intelligent parfait médiocre insupportable éblouissant valeureux ringard beau gentil cool]
 
-  10.times do
+  0.times do
 
     first_name = Faker::Name.first_name
     last_name = Faker::Name.last_name
@@ -34,13 +34,13 @@ Faker::Config.locale = :fr
 
 event_durations = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]
 
-  10.times do
+  15.times do
 
     start_date = Faker::Date.between(from: Date.today, to: '2021-12-31')
     duration = event_durations.sample
     title = Faker::Hipster.word.capitalize
     description = Faker::ChuckNorris.fact
-    price = Faker::Number.within(range: 1..1000)
+    price = 0 #Faker::Number.within(range: 1..1000)
     location = Faker::Address.city
     admin = User.all.sample
 
@@ -54,7 +54,7 @@ event_durations = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]
 
 #Generate attendances
 
-  10.times do
+  0.times do
   Attendance.create(user: User.all.sample, event: Event.all.sample)
   end
 
