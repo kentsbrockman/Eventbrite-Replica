@@ -62,7 +62,7 @@ class EventsController < ApplicationController
   def is_admin?
     @event = Event.find(params[:id])
     unless @event.admin == current_user
-      redirect_to root_path,
+      redirect_to event_path,
       warning: "Sorry bro! You can't just edit an event that's not yours to begin with 😁"
     end
   end

@@ -43,7 +43,7 @@ class Event < ApplicationRecord
     date.strftime("%l:%M %P")
   end
 
-  def is_registered?(user)
+  def already_registered?(user)
     if self.attendances
       self.attendances.find_by(user: user.id) ? true : false
     else 

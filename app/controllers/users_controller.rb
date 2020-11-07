@@ -22,16 +22,16 @@ class UsersController < ApplicationController
     end
   end
 
+  private
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :description)
+  end
+
   def check_user
     @user = User.find(params[:id])
     unless current_user.id == @user.id
        redirect_to root_path
     end
-  end
-
-  private
-  def user_params
-    params.require(:user).permit(:first_name, :last_name, :description)
   end
   
 end
