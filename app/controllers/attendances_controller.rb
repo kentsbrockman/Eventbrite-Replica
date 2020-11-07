@@ -37,7 +37,7 @@ class AttendancesController < ApplicationController
         description: 'Rails Stripe customer',
         currency: 'EUR',
       })
-    Attendance.create(event: @event, user: current_user, stripe_id: customer.id)
+      Attendance.create(event: @event, user: current_user, stripe_id: customer)
 
     rescue Stripe::CardError => e
       flash[:error] = e.message
