@@ -14,7 +14,7 @@ Faker::Config.locale = :fr
 
   adjectifs= %w[petit grand maigre gros chauve musclé intelligent parfait médiocre insupportable éblouissant valeureux ringard beau gentil cool]
 
-  3.times do
+  10.times do
 
     first_name = Faker::Name.first_name
     last_name = Faker::Name.last_name
@@ -34,7 +34,7 @@ Faker::Config.locale = :fr
 
 event_durations = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]
 
-  2.times do
+  10.times do
 
     start_date = Faker::Date.between(from: Date.today, to: '2021-12-31')
     duration = event_durations.sample
@@ -54,7 +54,7 @@ event_durations = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]
 
 #Generate attendances
 
-  2.times do
+  10.times do
   Attendance.create(user: User.all.sample, event: Event.all.sample)
   end
 
