@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, except: :index
+  before_action :is_admin?, only: [:edit, :update, :destroy]
   
   def index
     @events = Event.all
@@ -23,7 +24,26 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @events = Event.where(admin: @event.admin)
+  end
+
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+
+    if @event.update(event_params)
+      redirect_to event_path(@event.id), success: "Event updated in DB"
+    else
+      flash.now[:alert] = "We cannot updated this event for this reason(s) :"
+      render :edit
+    end
+  end
+
+  def destroy
+    Event.find(params[:id]).destroy
+    redirect_to user_path(current_user.id)
   end
 
   private
@@ -37,6 +57,14 @@ class EventsController < ApplicationController
 
   def str_to_datetime(str)
     DateTime.parse(str+'+01:00')
+  end
+
+  def is_admin?
+    @event = Event.find(params[:id])
+    unless @event.admin == current_user
+      redirect_to root_path,
+      warning: "Sorry bro! You can't just edit an event that's not yours to begin with 😁"
+    end
   end
 
 end

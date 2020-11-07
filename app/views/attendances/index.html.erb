@@ -1,0 +1,28 @@
+<div class="container">
+  <h1 class="text-center m-3">EVENT INFO</h1>
+
+  <%= link_to "Edit this event", edit_event_path(@event.id), :class => "btn btn-outline-success mx-4" %>
+  <%= link_to "Delete this event", event_path(@event.id), :method => "delete", :class => "btn btn-outline-danger mx-4", :data => {:confirm => "Are you sure about that 😬?"} %>
+  
+  
+
+  <h2 class="h3 mb-3 font-weight-normal text-center">All Attendees</h2>
+  <div class="row justify-content-center">
+    <% @attendances.each do |a| %>
+      <div class="card border-light m-3 rounded custom-card" style="max-width: 25rem;">
+        <div class="d-flex">
+          <img class="mt-5 mb-2 mx-auto" src="https://robohash.org/<%= a.user.id %>.png?set=set4">
+        </div>
+        <div class="card-body">
+          <p>First name : <%= a.user.first_name ? a.user.first_name : "Not mentionned" %></p>
+          <p>Last name : <%= a.user.last_name ? a.user.last_name : "Not mentionned" %></p>
+          <p>Description : <%= a.user.description ? a.user.description : "Not mentionned" %></p>
+          <p>Email : <%= a.user.email ? a.user.email : "Not mentionned" %></p>
+        </div>
+       </div>
+    <% end %>
+  </div>
+
+
+
+</div>

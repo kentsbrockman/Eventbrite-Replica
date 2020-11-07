@@ -1,7 +1,13 @@
 class AttendancesController < ApplicationController
   
   before_action :authenticate_user!
+  before_action :is_admin?, only: [:index]
 
+  def index
+    @event = Event.find_by(id: params[:event_id])
+    @attendances = @event.attendances
+  end
+  
   def new
     @event = Event.find_by(id: params[:event_id])
     @attendance = Attendance.new
@@ -34,5 +40,11 @@ class AttendancesController < ApplicationController
 
   end
 
+  
+private
+
+def is_admin?
+  redirect_to root_path, danger: "WTF" unless @event.is_admin?(current_user)
+end
 
 end

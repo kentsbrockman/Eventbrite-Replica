@@ -1,15 +1,30 @@
 
 <div class="container">
-<div class="mt-3">
-  <h1 class="text-center m-3">Title of this event : <%= @event.title %></h1>
-  <p>Description: <%= @event.description %></p>
-  <p>Creator: <%= @event.admin.email %></p>
-  <p>Date: <%= @event.clean_start_date %></p>
-  <p>From <%= @event.clean_start_hour %> to <%= @event.clean_end_hour %></p>
-  <p>Duration: <%= @event.duration %> minutes</p>
-  <p>Where? <%= @event.location %></p>
-  <p>Price: <%= @event.price %> €</p>
+
+  <div class="mt-3">
+    <h1 class="text-center m-3">Title of this event : <%= @event.title %></h1>
+    <p>Description: <%= @event.description %></p>
+    <p>Creator: <%= @event.admin.email %></p>
+    <p>Date: <%= @event.clean_start_date %></p>
+    <p>From <%= @event.clean_start_hour %> to <%= @event.clean_end_hour %></p>
+    <p>Duration: <%= @event.duration %> minutes</p>
+    <p>Where? <%= @event.location %></p>
+    <p>Price: <%= @event.price %> €</p>
+  </div>
+
+
+  <% if @event.is_admin?(current_user) %>
+    <%= link_to "Attendees", event_attendances_path(@event.id) , class: "btn btn-primary"%>
+    <%= link_to "Edit this event", edit_event_path(@event.id), :class => "btn btn-outline-success mx-4" %>
+    <%= link_to "Delete this event", event_path(@event.id), :method => "delete", :class => "btn btn-outline-danger mx-4", :data => {:confirm => "Are you sure about that 😬?"} %>
+
+
+  <% elsif @event.is_registered?(current_user) %>
+    <%= link_to "Already subscribe", new_event_attendance_path(@event.id) , class: "btn btn-primary"%>
+  
+  <% else %>
+    <%= link_to "Register for this event", new_event_attendance_path(@event.id) , class: "btn btn-primary"%>
+  <% end %>
+
+
 </div>
-
-<%= link_to "Register for this event", new_event_attendance_path(@event.id) , class: "btn btn-primary"%>
-
