@@ -20,6 +20,8 @@
     <%= link_to "Register for this event", new_event_attendance_path(@event.id) , class: "btn btn-primary"%>
   <% end %>
 
-  <%= image_tag @event.event_picture, alt: 'picture', class: "img-fluid img-event rounded mx-auto d-block m-3" %>
+  <% if @event.event_picture.attached? %>
+    <%= image_tag @event.event_picture, alt: 'picture', class: "img-fluid img-event rounded mx-auto d-block m-3" %>
+  <% end %>
 
 </div>
