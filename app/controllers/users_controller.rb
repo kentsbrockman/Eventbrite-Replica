@@ -12,12 +12,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     if @user.update(user_params)
-      flash[:notice] = "User updated in DB"
+      flash[:success] = "Your profile has been updated!"
       redirect_to user_path(@user.id)
     else
-      flash.now[:alert] = "We cannot updated this gossip for this reason(s) :"
+      flash.now[:alert] = "We cannot update your profile for the following reason(s):"
       render :edit
     end
   end
@@ -31,7 +31,8 @@ class UsersController < ApplicationController
   def check_user
     @user = User.find(params[:id])
     unless current_user.id == @user.id
-       redirect_to root_path
+      flash[:warning] = "Where are you going mate 😁?"
+      redirect_to root_path
     end
   end
   
