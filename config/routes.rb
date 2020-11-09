@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'home/contact', to: 'home#contact'
   get 'home/privacy', to: 'home#privacy'
   get 'home/terms', to: 'home#terms'
+  get 'home/flatly', to: 'home#flatly'
 
   devise_for :users
 
@@ -17,6 +18,10 @@ Rails.application.routes.draw do
   resources :events do 
     resources :attendances
     resources :event_pictures, only: [:create]
+  end
+
+  namespace :admin do
+    root 'admin#index'
   end
 
 end

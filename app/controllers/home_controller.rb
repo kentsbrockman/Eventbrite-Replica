@@ -10,4 +10,8 @@ class HomeController < ApplicationController
 
   def privacy
   end
+
+  def flatly
+  end
+
 end
