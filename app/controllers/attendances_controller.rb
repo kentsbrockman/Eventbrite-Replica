@@ -21,7 +21,7 @@ class AttendancesController < ApplicationController
 
     if @event.admin == current_user
       redirect_to event_path(@event),
-      warning: "You're the administrator of this event, no need to register ^^"
+      info: "You're the administrator of this event, no need to register ^^"
     end
   end
 
@@ -44,9 +44,11 @@ class AttendancesController < ApplicationController
     })
 
     Attendance.create(event: @event, user: current_user, stripe_id: customer)
+    redirect_to event_path(@event),
+    success: "You're now registered for this event!"
 
     rescue Stripe::CardError => e
-      flash[:error] = e.message
+      flash[:warning] = e.message
       redirect_to new_attendance_path
   end
 
@@ -66,7 +68,7 @@ class AttendancesController < ApplicationController
       return true
     else
       redirect_to event_path(@event),
-      warning: "Already registered bro!"
+      info: "You're already registered bro!"
     end
   end
 

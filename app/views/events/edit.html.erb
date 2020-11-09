@@ -33,8 +33,10 @@
           <%= f.text_field :location, class: "form-control" %>
         </div>
 
-        <%= image_tag @event.event_picture, alt: 'picture', class: "img-fluid img-event rounded mx-auto d-block m-3" %>
-
+        <% if @event.event_picture.attached? %>
+          <%= image_tag @event.event_picture, alt: 'picture', class: "img-fluid img-event rounded mx-auto d-block m-3" %>
+        <% end %>
+        
         <div class="form-group">
           <h5> Update event picture </h5>
           <%= f.file_field :event_picture, class: "form-control" %>

@@ -14,10 +14,10 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.admin = current_user
     if @event.save
-      flash[:notice] = "Event create"
+      flash[:success] = "Your event has been created!"
       redirect_to event_path(@event.id)
     else
-      flash.now[:alert] = "We cannot create this event for this reason(s) :"
+      flash.now[:alert] = "We cannot create the event for the following reason(s):"
       render :new
     end
   end
@@ -34,9 +34,10 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     if @event.update(event_params)
-      redirect_to event_path(@event.id), success: "Event updated in DB"
+      flash[:success] = "Your event has been updated!"
+      redirect_to event_path(@event.id), success: "Your event has been successfully updated!"
     else
-      flash.now[:alert] = "We cannot updated this event for this reason(s) :"
+      flash.now[:alert] = "We cannot update the event for the following reason(s):"
       render :edit
     end
   end

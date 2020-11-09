@@ -25,11 +25,11 @@ class Event < ApplicationRecord
   has_one_attached :event_picture
 
   def multiple_of_five
-    errors.add(:duration, "should be a multiple of 5.") unless duration % 5 == 0
+    errors.add(:duration, "should be a multiple of 5") unless duration % 5 == 0
   end
 
   def future_date
-    errors.add(:start_date, "Event can't be in the past") unless start_date > DateTime.now
+    errors.add(:start_date, "can't be in the past") unless start_date > DateTime.now
   end
 
   def clean_start_date

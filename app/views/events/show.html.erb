@@ -15,7 +15,7 @@
   <% if @event.is_admin?(current_user) %>
     <%= link_to "Event info", event_attendances_path(@event.id) , class: "btn btn-primary"%>  
   <% elsif @event.already_registered?(current_user) %>
-    <%= link_to "Already registered!", new_event_attendance_path(@event.id) , class: "btn btn-primary"%>
+    <%= link_to "Registered", new_event_attendance_path(@event.id) , class: "btn btn-primary"%>
   <% else %>
     <%= link_to "Register for this event", new_event_attendance_path(@event.id) , class: "btn btn-primary"%>
   <% end %>

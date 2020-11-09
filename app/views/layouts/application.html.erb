@@ -12,7 +12,7 @@
     <!-- Custom styles -->
     <%= stylesheet_link_tag 'main', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+  
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
     <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
@@ -25,7 +25,7 @@
   <body>
 
   <!-- Header -->
-  <nav class="navbar navbar-light bg-none static-top">
+  <nav class="navbar navbar-light bg-none static-top my-2">
 
     <div class="brand">
       <%= link_to image_tag('logo_homepage.png', :alt => 'logo', class:"navbar-brand"), root_path  %>
@@ -36,28 +36,27 @@
       <%= link_to "Flatly showcase", home_flatly_path, class:"nav-link" %>
     </div>
 
-    <ul>
     <% if user_signed_in? %> 
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                My Profile
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <%= link_to "My profile", user_path(current_user.id), :class => "dropdown-item" %>
-                <%= link_to "Sign out", destroy_user_session_path, method: :delete, :class => "dropdown-item" %>
-              </div>
-            </div>
-          <% else %>
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Log in
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <%= link_to "Log in", new_user_session_path, :class => "dropdown-item" %>
-                <%= link_to "Sign up", new_user_registration_path, :class => "dropdown-item" %>
-              </div>
-            </div>
-          <% end %>
+      <div class="dropdown">
+        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= current_user.first_name %>
+        </button>
+        <div class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="dropdownMenuButton">
+          <%= link_to "My profile", user_path(current_user.id), :class => "dropdown-item" %>
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete, :class => "dropdown-item" %>
+        </div>
+      </div>
+    <% else %>
+      <div class="dropdown">
+        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Log in
+        </button>
+        <div class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="dropdownMenuButton">
+          <%= link_to "Log in", new_user_session_path, :class => "dropdown-item" %>
+          <%= link_to "Sign up", new_user_registration_path, :class => "dropdown-item" %>
+        </div>
+      </div>
+    <% end %>
           
   </nav>
 
@@ -87,7 +86,7 @@
               <a href="<%= home_privacy_path %>">Privacy Policy</a>
             </li>
           </ul>
-          <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2020. All Rights Reserved.</p>
+          <p class="text-muted small mb-4 mb-lg-0">&copy; Eventbrite Replica 2020. All Rights Reserved.</p>
         </div>
         <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
           <ul class="list-inline mb-0">
