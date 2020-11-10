@@ -9,7 +9,7 @@ J'espère que tout se passe bien de votre côté 🙂
 
 Et voici donc pour vous aujourd'hui, ici même sur ce repo, ma version actualisée du projet Eventbrite.
 
-- 1er élément, et pas des moindres : ça marche en Prod, donc ça fait plaisir !
+- 1er point à noter, et pas des moindres : ça marche en Prod, donc ça fait plaisir !
 - En ce qui concerne le Front, j'avoue que j'ai pris quelques libertés par rapport aux consignes de départ. Voici quelques éléments que vous trouverez :
   - Un thème supplémentaire ("Flatly" en l'occurence). Cependant, je suis quand même resté sur le template Bootstrap générique pour le site. Cela me paraissait plus agréable.
   - Une navbar bien peaufinée en mode UX-friendly.
