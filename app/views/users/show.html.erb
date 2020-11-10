@@ -1,40 +1,67 @@
-<div class="container text-center">
-  
-  <div class="avatar">  
-    <%if @user.avatar.attached?%>
-      <%= image_tag(@user.avatar, :alt => 'real avatar', class:'img-thumbnail rounded-circle m-3', style: 'height:150px;width:150px') %>
-    <%else%>
-      <%= image_tag('unnamed.jpg', :alt => 'default avatar', class:'img-thumbnail rounded-circle m-3', style: 'height:150px;width:150px') %>
-    <%end%>
+<div class="profile_canvas d-flex flex-column align-items-center">
+
+  <img class="img-fluid rounded" src="https://picsum.photos/seed/picsum/1000/400" >
+  <%if @user.avatar.attached?%>
+    <%= image_tag(@user.avatar, :alt => 'real avatar', class:'img-thumbnail profile_pic rounded-circle m-3', style: 'height:200px;width:200px') %>
+  <%else%>
+    <%= image_tag('unnamed.jpg', :alt => 'default avatar', class:'img-thumbnail profile_pic rounded-circle m-3', style: 'height:200px;width:200px') %>
+  <%end%>
+
+  <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+
+  <%if @user.description?%>
+    <div class="text-muted my-2"><%= @user.description %></div>
+  <%else%>
+    <strong class="my-2"><%= link_to "Add Bio", edit_user_path(@user) %></strong>
+  <%end%>
+
+
+  <div class="link_edit_profile">
+    <%= link_to edit_user_path(current_user.id), class:"btn btn-light-custom-profile rounded d-flex mx-2 align-items-center", style:"height: 32px"  do %>
+      <i class="fas fa-user mr-2"></i>
+      <span>Edit Profile</span>
+    <% end %>
   </div>
 
-    <p><%= @user.first_name %> <%= @user.last_name %></p>
-    <p>Your description: <%= @user.description ? @user.description : "Not mentioned" %></p>
-    <p>Your email: <%= @user.email %></p>
-
-  <% if @events.length > 0 %>
-    <h2 class="h3 mb-3 font-weight-normal text-center">All events</h2>
-    <div class="row justify-content-center">
-      <% @events.each do |event| %>
-          <div class="card border-light m-3 rounded custom-card" style="max-width: 20rem;"> 
-
-            <div class="card-body">
-              <h4 class="card-title"><%= event.title %></h4>
-              <h5 class="text-muted"><%= event.start_date %></h5>
-              <p class="card-text"><%= event.description%></p>
-              <p class="text-center m-3"><%= link_to "See this event >", event_path(event.id) %></p>
-            </div>
-          </div>
-      <% end %>
-    </div>
-    
-  <% else %> 
-    <p class="text-center m-3">No events</p>
-  <% end %>
-  
-  <div class="Edit user">
-    <p class="text-center m-3"><%= link_to "Edit your email >", edit_user_registration_path(@user) %></p>
-    <p class="text-center m-3"><%= link_to "Edit your profile >", edit_user_path(@user) %></p>
+  <div class="link_personal_settings">
+    <%= link_to edit_user_registration_path(current_user.id), class:"btn btn-light-custom-profile rounded d-flex mx-2 align-items-center", style:"height: 32px"  do %>
+      <i class="fas fa-cog mr-2"></i>
+      <span>Settings & Privacy</span>
+    <% end %>
   </div>
 
 </div>
+
+<hr/>
+
+<div class="container user_events my-3", style="max-width:400px">
+
+  <% if @events.length > 0 %>
+
+    <h4 class="text-center">All your events</h4>
+
+    <% @events.each do |event| %>
+      <div class="card text-center my-4">
+        <h4 class="card-header text-primary"><%= event.title %></h4>
+        <div class="card-body">
+          <h5 class="card-title text-muted"><%= event.start_date.strftime("%B %d, %Y at %l:%M %P") %></h5>
+          <% if event.event_picture.attached? %>
+            <%= image_tag event.event_picture, alt: 'picture', class: "img-fluid rounded mx-2", style: 'height:auto;width:300px' %>
+          <% end %>
+          <p class="card-text"><%= event.description%></p>
+          <%= link_to "See this event", event_path(event.id), class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+    
+  <% else %>
+
+    <div class="event_creation_via_profile d-flex flex-column align-items-center">
+      <h5 class="my-4">You haven't organized any event yet!</h5>
+      <%= link_to "Create your first event", new_event_path, class: "btn btn-primary" %>
+    </div>
+
+  <% end %>
+
+</div>
+

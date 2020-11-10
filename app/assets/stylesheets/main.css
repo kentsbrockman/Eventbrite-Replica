@@ -95,6 +95,10 @@ header.masthead h1 {
   margin:auto;
 }
 
+.profile_canvas {
+  background: linear-gradient(#d2d2d2, white);
+}
+
 footer.footer {
   padding-top: 10px;
   padding-bottom: 10px;
