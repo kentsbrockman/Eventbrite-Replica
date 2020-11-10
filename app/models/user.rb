@@ -11,6 +11,13 @@ class User < ApplicationRecord
   has_many :events, through: :attendances
   has_many :admins, foreign_key: 'admin_id', class_name: "Event"
 
+  validates :first_name,
+    presence: true,
+    length: { in: 2..20 }
+  validates :last_name,
+    presence: true,
+    length: { in: 2..20 }
+    
   has_one_attached :avatar
        
   def welcome_send

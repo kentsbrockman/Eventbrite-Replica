@@ -33,6 +33,8 @@ gem 'faker'
 gem 'table_print'
 gem 'devise'
 gem 'stripe'
+gem 'image_processing'
+gem 'mini_magick'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
