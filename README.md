@@ -16,7 +16,7 @@ Et voici donc pour vous aujourd'hui, ici même sur ce repo, ma version actualis�
  - Une homepage qui tient la route je pense, mis à part pour l'amoncellement de cartes événements.
  - Une page profil qui passe bien.
  - Quelques formulaires terminés avec un template très bateau (sign up, édition profil) et un essai un peu plus ambitieux pour le login.
- - Quelques liens de navigation en plus 
+ - Quelques pages statiques de navigation en plus histoire de ^^
 
 ---
 
