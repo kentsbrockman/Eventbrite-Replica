@@ -2,7 +2,7 @@
   
   <div class="avatar">  
     <%if @user.avatar.attached?%>
-      <%= image_tag(@user.avatar, :alt => 'default avatar', class:'img-thumbnail rounded-circle m-3', style: 'height:150px;width:150px') %>
+      <%= image_tag(@user.avatar, :alt => 'real avatar', class:'img-thumbnail rounded-circle m-3', style: 'height:150px;width:150px') %>
     <%else%>
       <%= image_tag('unnamed.jpg', :alt => 'default avatar', class:'img-thumbnail rounded-circle m-3', style: 'height:150px;width:150px') %>
     <%end%>

@@ -11,6 +11,9 @@ class HomeController < ApplicationController
   def privacy
   end
 
+  def basics
+  end
+
   def flatly
   end
 

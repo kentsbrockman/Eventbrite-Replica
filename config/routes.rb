@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'home/privacy', to: 'home#privacy'
   get 'home/terms', to: 'home#terms'
   get 'home/flatly', to: 'home#flatly'
+  get 'home/basics', to: 'home#basics'
+
 
   devise_for :users
 

@@ -33,11 +33,11 @@ gem 'faker'
 gem 'table_print'
 gem 'devise'
 gem 'stripe'
-gem 'image_processing'
-gem 'mini_magick'
+gem 'active_link_to'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
+# gem 'mini_magick'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: true
