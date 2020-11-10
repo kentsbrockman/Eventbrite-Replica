@@ -4,7 +4,6 @@ body {
 	display: flex;
 	flex-direction: column;
   min-height: 100vh;
-  background-color: #F1F2F5;
 }
 
 h1,
@@ -15,6 +14,48 @@ h5,
 h6 {
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 700;
+}
+
+
+.btn-light-custom-nav-links {
+  color: #212529;
+  background-color: #f8f9fa;
+  border-color: #f8f9fa;
+}
+
+.btn-light-custom-nav-links:hover {
+  color: #212529;
+  background-color: #e2e6ea;
+  border-color: #dae0e5;
+}
+
+.btn-light-custom-nav-links:not(:disabled):not(.disabled):active, .btn-light-custom-nav-links:not(:disabled):not(.disabled).active {
+  color: #007bff;
+  background-color: white;
+  border: none;
+  border-radius: 0 !important;
+  border-bottom: 4px solid #007bff;
+}
+
+
+.btn-light-custom-profile {
+  color: #212529;
+  background-color: #f8f9fa;
+  border-color: #f8f9fa;
+}
+
+.btn-light-custom-profile:hover {
+  color: #212529;
+  background-color: #e2e6ea;
+  border-color: #dae0e5;
+}
+
+.btn-light-custom-profile:not(:disabled):not(.disabled):active, .btn-light-custom-profile:not(:disabled):not(.disabled).active,
+.show > .btn-light.dropdown-toggle {
+  color: #007bff;
+  background-color: #E7F4FA;
+  border: none;
+  border-color: #d3d9df;
 }
 
 header.masthead {
