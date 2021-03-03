@@ -1,23 +1,25 @@
-## Eventbrite de Wish
+# Eventbrite Replica
 
-https://eventbrite-replica.herokuapp.com/
+Hi there!
 
-
-### Yo les devs !
-
-J'espère que tout se passe bien de votre côté 🙂
-
-Et voici donc pour vous aujourd'hui, ici même sur ce repo, ma version actualisée du projet Eventbrite.
-
-- 1er point à noter, et pas des moindres : ça marche en Prod, donc ça fait plaisir !
-- En ce qui concerne le Front, j'avoue que j'ai pris quelques libertés par rapport aux consignes de départ. Voici quelques éléments que vous trouverez :
-  - Un thème supplémentaire ("Flatly" en l'occurence). Cependant, je suis quand même resté sur le template Bootstrap générique pour le site. Cela me paraissait plus agréable.
-  - Une navbar bien peaufinée en mode UX-friendly.
-  - Une homepage qui tient la route je pense, mis à part pour l'amoncellement de cartes événements.
-  - Une page profil qui passe bien.
-  - Quelques formulaires terminés avec un template très bateau (sign up, édition profil, création événement) et un essai un peu plus ambitieux pour le login.
-  - Quelques pages statiques en plus histoire de ^^
+Here is another **Ruby on Rails project** done during [The Hacking Project](https://www.thehackingproject.org/) bootcamp, that logically followed the social network application that we had done the week before ([The Gossip Project](https://github.com/kentsbrockman/The-Gossip-Project/).
 
 ---
 
-Bonne journée à tous !
+## New Features
+
+- User authentication via the "Devise" Ruby gem.
+- Mailers via "Sendgrid".
+- Payment system via Stripe.
+- Implementation of the asset pipeline and Active Storage.
+- Import of a Bootstrap them.
+
+---
+
+## Access
+
+https://eventbrite-replica.herokuapp.com/
+
+---
+
+Have a nice day!
